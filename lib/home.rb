@@ -18,14 +18,20 @@ class Home
     end
   end
 
+  # Turn on all devices in this home.
   def self.turn_on
     devices.each &:turn_on
   end
 
+  # Turn off all devices in this home.
   def self.turn_off
     devices.each &:turn_off
   end
 
+  # Find a device by it's id.
+  #
+  # @param id the id of the device
+  # @return [Device, nil] the device or nil.
   def self.find(id)
     name = Tellduscore.get_name id
     return nil if name.blank?
