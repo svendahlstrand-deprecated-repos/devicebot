@@ -31,6 +31,10 @@ class Device
     Tellduscore.turn_off id
   end
 
+  def name=(name)
+    @name = name if Tellduscore.set_name(id, name)
+  end
+
   def to_s
     name
   end

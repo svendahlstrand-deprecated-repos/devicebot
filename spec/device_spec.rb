@@ -59,4 +59,23 @@ describe Device do
     device = Device.new @valid_device
     device.to_s.should == @valid_device[:name]
   end
+
+  it "should be able to alter it's name" do
+    device = Device.new @valid_device
+    new_name = 'WC Light'
+    Tellduscore.should_receive(:set_name).once.with(device.id, new_name).and_return(true)
+
+    device.name = new_name
+    device.name.should == new_name
+  end
+
+  it 'should not alter name if the API call fails' do
+    device = Device.new @valid_device
+    new_name = 'WC Light'
+    old_name = @valid_device[:name]
+    Tellduscore.should_receive(:set_name).once.with(device.id, new_name).and_return(false)
+
+    device.name = new_name
+    device.name.should == old_name
+  end
 end
