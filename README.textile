@@ -1,0 +1,24 @@
+h1. devicebot
+
+devicebot låter dig:
+
+* Komma åt Telldus API från Ruby
+* Jobba mot din Tellstick objektorienterat och elegant: "The Ruby way"
+* Fjärrstyra dina enheter från en iPhone med Safari mobile...
+* eller vilken annan webbläsare som helst
+
+h2. Exempel
+
+<pre>
+<code>
+devices = Home.devices
+
+devices.first.turn_on
+devices.first.status
+devices.first.name
+
+devices.each do |device|
+  device.turn_off
+end
+</code>
+</pre>
