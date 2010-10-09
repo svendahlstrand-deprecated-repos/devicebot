@@ -1,7 +1,7 @@
 class Device
   require 'tellduscore'
 
-  TELLSTICK_METHODS = Tellduscore::TELLSTICK_TURNON | Tellduscore::TELLSTICK_TURNOFF
+  AVAILABLE_METHODS = Tellduscore::TELLSTICK_TURNON | Tellduscore::TELLSTICK_TURNOFF
 
   attr_reader :name, :id
 
@@ -16,7 +16,7 @@ class Device
   end
 
   def status
-    on = Tellduscore.td_last_sent_command(id, TELLSTICK_METHODS) == Tellduscore::TELLSTICK_TURNON
+    on = Tellduscore.td_last_sent_command(id, AVAILABLE_METHODS) == Tellduscore::TELLSTICK_TURNON
     on ? :on : :off
   end
 
