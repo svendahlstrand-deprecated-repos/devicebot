@@ -19,15 +19,15 @@ class Device
 
   # @return [Symbol] :on or :off.
   def status
-    on = Tellduscore.td_last_sent_command(id, AVAILABLE_METHODS) == Tellduscore::TELLSTICK_TURNON
+    on = Tellduscore.last_sent_command(id, AVAILABLE_METHODS) == Tellduscore::TELLSTICK_TURNON
     on ? :on : :off
   end
 
   def turn_on
-    Tellduscore.td_turn_on id
+    Tellduscore.turn_on id
   end
 
   def turn_off
-    Tellduscore.td_turn_off id
+    Tellduscore.turn_off id
   end
 end

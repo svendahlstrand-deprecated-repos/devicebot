@@ -33,25 +33,25 @@ describe Device do
 
   it 'should have status on when on' do
     device = Device.new @valid_device
-    Tellduscore.should_receive(:td_last_sent_command).with(device.id, Device::AVAILABLE_METHODS).and_return(Tellduscore::TELLSTICK_TURNON)
+    Tellduscore.should_receive(:last_sent_command).with(device.id, Device::AVAILABLE_METHODS).and_return(Tellduscore::TELLSTICK_TURNON)
     device.status.should == :on
   end
 
   it 'should have status on when off' do
     device = Device.new @valid_device
-    Tellduscore.should_receive(:td_last_sent_command).with(device.id, Device::AVAILABLE_METHODS).and_return(Tellduscore::TELLSTICK_TURNOFF)
+    Tellduscore.should_receive(:last_sent_command).with(device.id, Device::AVAILABLE_METHODS).and_return(Tellduscore::TELLSTICK_TURNOFF)
     device.status.should == :off
   end
 
   it 'should be able to turn on' do
     device = Device.new @valid_device
-    Tellduscore.should_receive(:td_turn_on).with(device.id).and_return(Tellduscore::TELLSTICK_TURNON)
+    Tellduscore.should_receive(:turn_on).with(device.id).and_return(Tellduscore::TELLSTICK_TURNON)
     device.turn_on
   end
 
   it 'should be able to turn off' do
     device = Device.new @valid_device
-    Tellduscore.should_receive(:td_turn_off).with(device.id).and_return(Tellduscore::TELLSTICK_TURNOFF)
+    Tellduscore.should_receive(:turn_off).with(device.id).and_return(Tellduscore::TELLSTICK_TURNOFF)
     device.turn_off
   end
 end
