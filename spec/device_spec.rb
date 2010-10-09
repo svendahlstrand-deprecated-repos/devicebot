@@ -54,4 +54,9 @@ describe Device do
     Tellduscore.should_receive(:turn_off).with(device.id).and_return(Tellduscore::TELLSTICK_TURNOFF)
     device.turn_off
   end
+
+  it 'should return name on to_s' do
+    device = Device.new @valid_device
+    device.to_s.should == @valid_device[:name]
+  end
 end

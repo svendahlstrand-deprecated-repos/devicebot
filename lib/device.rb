@@ -30,4 +30,8 @@ class Device
   def turn_off
     Tellduscore.turn_off id
   end
+
+  def to_s
+    name
+  end
 end
