@@ -11,14 +11,33 @@ h2. Exempel
 
 <pre>
 <code>
+# Hämta alla apparater
 devices = Home.devices
 
+# Sätt på den första
 devices.first.turn_on
+
+# Hämta status (:on eller :off)
 devices.first.status
+
+# Vad heter apparaten?
 devices.first.name
 
-devices.each do |device|
-  device.turn_off
+# Stäng av alla apparater i hemmet
+Home.turn_off
+
+# Gör din sambo galen
+while
+  status = devices.first.status
+  dark = (status == :off) ? true : false
+
+  if dark
+    Home.turn_on
+  else
+    Home.turn_off
+  end
+
+  sleep 3
 end
 </code>
 </pre>
