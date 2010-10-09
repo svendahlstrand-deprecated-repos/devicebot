@@ -75,4 +75,11 @@ describe Home do
     device.name.should == @kitchen_lamp[:name]
     device.id.should == @kitchen_lamp[:id]
   end
+
+  it 'should convert find parameter to integer' do
+    Tellduscore.should_receive(:get_name).once.with(@kitchen_lamp[:id]).and_return(@kitchen_lamp[:name])
+
+    device = Home.find @kitchen_lamp[:id].to_s
+    device.id.should == @kitchen_lamp[:id]
+  end
 end

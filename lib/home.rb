@@ -33,6 +33,7 @@ class Home
   # @param id the id of the device
   # @return [Device, nil] the device or nil.
   def self.find(id)
+    id = id.to_i
     name = Tellduscore.get_name id
     return nil if name.blank?
 
