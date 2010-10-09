@@ -36,4 +36,28 @@ describe Home do
     #Home.devices
     pending
   end
+
+  it 'should turn off all devices' do
+    kitchen_lamp = Device.new @kitchen_lamp
+    bedroom_lamp = Device.new @bedroom_lamp
+    lamps = [kitchen_lamp, bedroom_lamp]
+
+    Home.should_receive(:devices).once.and_return(lamps)
+    kitchen_lamp.should_receive(:turn_off).once
+    bedroom_lamp.should_receive(:turn_off).once
+
+    Home.turn_off
+  end
+
+  it 'should turn on all devices' do
+    kitchen_lamp = Device.new @kitchen_lamp
+    bedroom_lamp = Device.new @bedroom_lamp
+    lamps = [kitchen_lamp, bedroom_lamp]
+
+    Home.should_receive(:devices).once.and_return(lamps)
+    kitchen_lamp.should_receive(:turn_on).once
+    bedroom_lamp.should_receive(:turn_on).once
+
+    Home.turn_on
+  end
 end

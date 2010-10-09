@@ -17,4 +17,12 @@ class Home
       devices <<  device if device.valid?
     end
   end
+
+  def self.turn_on
+    devices.each &:turn_on
+  end
+
+  def self.turn_off
+    devices.each &:turn_off
+  end
 end
