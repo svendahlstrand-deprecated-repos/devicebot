@@ -60,4 +60,19 @@ describe Home do
 
     Home.turn_on
   end
+
+  it 'should return nil when no device is found' do
+    Tellduscore.should_receive(:get_name).once.and_return('')
+
+    device = Home.find(999)
+    device.should == nil
+  end
+
+  it 'should find single device by id' do
+    Tellduscore.should_receive(:get_name).once.with(@kitchen_lamp[:id]).and_return(@kitchen_lamp[:name])
+
+    device = Home.find @kitchen_lamp[:id]
+    device.name.should == @kitchen_lamp[:name]
+    device.id.should == @kitchen_lamp[:id]
+  end
 end

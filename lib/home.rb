@@ -25,4 +25,11 @@ class Home
   def self.turn_off
     devices.each &:turn_off
   end
+
+  def self.find(id)
+    name = Tellduscore.get_name id
+    return nil if name.blank?
+
+    Device.new :id => id, :name => name
+  end
 end
