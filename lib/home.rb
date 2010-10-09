@@ -2,6 +2,10 @@ class Home
   require 'tellduscore'
   require_relative 'device'
 
+  # Get all the devices in this home. That is all the devices Tellstick know about
+  # (the content of the file usually located in /etc/tellstick.conf).
+  #
+  # @return [Array] of devices.
   def self.devices
     number_of_devices = Tellduscore.td_get_number_of_devices
 

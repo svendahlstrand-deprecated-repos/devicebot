@@ -1,5 +1,6 @@
 class Device
   require 'tellduscore'
+  require_relative 'core_ext/object'
 
   AVAILABLE_METHODS = Tellduscore::TELLSTICK_TURNON | Tellduscore::TELLSTICK_TURNOFF
 
@@ -11,10 +12,12 @@ class Device
     @id = hash[:id]
   end
 
+  # @return [Boolean] true if name and id is present.
   def valid?
     return name.present? && id.present?
   end
 
+  # @return [Symbol] :on or :off.
   def status
     on = Tellduscore.td_last_sent_command(id, AVAILABLE_METHODS) == Tellduscore::TELLSTICK_TURNON
     on ? :on : :off
@@ -26,15 +29,5 @@ class Device
 
   def turn_off
     Tellduscore.td_turn_off id
-  end
-end
-
-class Object
-  def blank?
-    respond_to?(:empty?) ? empty? : !self
-  end
-
-  def present?
-    !blank?
   end
 end
