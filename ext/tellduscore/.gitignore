@@ -1,0 +1,6 @@
+Makefile
+*.bundle
+*.c
+*.log
+*.o
+*.so

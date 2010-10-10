@@ -1,0 +1,15 @@
+h1. Install instructions
+
+h2. OS X
+
+* swig -ruby -autorename -I/Library/Frameworks/Tellduscore.framework/Headers tellduscore.i
+* ruby extconf.rb
+* make
+* make install
+
+h2. Ubuntu
+
+* swig -ruby -autorename -I/usr/include tellduscore.i
+* ruby extconf.rb
+* make
+* make install
