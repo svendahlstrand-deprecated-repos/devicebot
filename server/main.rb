@@ -10,27 +10,23 @@ get '/' do
 end
 
 get '/devices/on' do
-  Devices.all.turn_on
-  redirect '/'
+  Device.all.turn_on
 end
 
 get '/devices/off' do
   Device.all.turn_off
-  redirect '/'
 end
 
 get '/devices/:id/on' do
   Device.find(params[:id]).turn_on
-  redirect '/'
 end
 
 get '/devices/:id/off' do
   Device.find(params[:id]).turn_off
-  redirect '/'
 end
 
 helpers do
-  def on_or_off(status)
-    (status == :on) ? 'p&aring;' : 'av'
+  def checked(status)
+    (status == :on) ? ' checked="checked"' : ''
   end
 end
