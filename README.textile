@@ -15,20 +15,23 @@ h2. Exempel
 devices = Home.devices
 
 # Sätt på den första
-devices.first.turn_on
+device = devices.first.turn_on
 
 # Hämta status (:on eller :off)
-devices.first.status
+device.status
 
 # Vad heter apparaten?
-devices.first.name
+device.name
+
+# Hämta en apparat med hjälp av id
+device = Home.find 1
 
 # Stäng av alla apparater i hemmet
 Home.turn_off
 
 # Gör din sambo galen
 while
-  status = devices.first.status
+  status = device.status
   dark = (status == :off) ? true : false
 
   if dark
