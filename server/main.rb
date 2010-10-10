@@ -2,30 +2,30 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
-require_relative '../lib/home'
+require_relative '../lib/device'
 
 get '/' do
-  @devices = Home.devices
+  @devices = Device.devices
   erb :index
 end
 
 get '/devices/on' do
-  Home.turn_on
+  Device.turn_on
   redirect '/'
 end
 
 get '/devices/off' do
-  Home.turn_off
+  Device.turn_off
   redirect '/'
 end
 
 get '/devices/:id/on' do
-  Home.find(params[:id]).turn_on
+  Device.find(params[:id]).turn_on
   redirect '/'
 end
 
 get '/devices/:id/off' do
-  Home.find(params[:id]).turn_off
+  Device.find(params[:id]).turn_off
   redirect '/'
 end
 

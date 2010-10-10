@@ -1,6 +1,6 @@
-require 'home'
+require 'device'
 
-describe Home do
+describe Device do
   before :all do
     @kitchen_lamp = {
       :name => 'Kitchen lamp',
@@ -22,7 +22,7 @@ describe Home do
     Tellduscore.should_receive(:get_name).once.with(@kitchen_lamp[:id]).and_return(@kitchen_lamp[:name])
     Tellduscore.should_receive(:get_name).once.with(@bedroom_lamp[:id]).and_return(@bedroom_lamp[:name])
 
-    devices = Home.devices
+    devices = Device.devices
 
     devices.length.should == number_of_devices
     devices.first.id.should == @kitchen_lamp[:id]
@@ -32,8 +32,8 @@ describe Home do
   it 'should only hit the api once when calling devices' do
     #Tellduscore.should_receive(:number_of_devices).once.and_return(0)
 
-    #Home.devices
-    #Home.devices
+    #Device.devices
+    #Device.devices
     pending
   end
 
@@ -42,11 +42,11 @@ describe Home do
     bedroom_lamp = Device.new @bedroom_lamp
     lamps = [kitchen_lamp, bedroom_lamp]
 
-    Home.should_receive(:devices).once.and_return(lamps)
+    Device.should_receive(:devices).once.and_return(lamps)
     kitchen_lamp.should_receive(:turn_off).once
     bedroom_lamp.should_receive(:turn_off).once
 
-    Home.turn_off
+    Device.turn_off
   end
 
   it 'should turn on all devices' do
@@ -54,24 +54,24 @@ describe Home do
     bedroom_lamp = Device.new @bedroom_lamp
     lamps = [kitchen_lamp, bedroom_lamp]
 
-    Home.should_receive(:devices).once.and_return(lamps)
+    Device.should_receive(:devices).once.and_return(lamps)
     kitchen_lamp.should_receive(:turn_on).once
     bedroom_lamp.should_receive(:turn_on).once
 
-    Home.turn_on
+    Device.turn_on
   end
 
   it 'should return nil when no device is found' do
     Tellduscore.should_receive(:get_name).once.and_return('')
 
-    device = Home.find(999)
+    device = Device.find(999)
     device.should == nil
   end
 
   it 'should find single device by id' do
     Tellduscore.should_receive(:get_name).once.with(@kitchen_lamp[:id]).and_return(@kitchen_lamp[:name])
 
-    device = Home.find @kitchen_lamp[:id]
+    device = Device.find @kitchen_lamp[:id]
     device.name.should == @kitchen_lamp[:name]
     device.id.should == @kitchen_lamp[:id]
   end
@@ -79,7 +79,7 @@ describe Home do
   it 'should convert find parameter to integer' do
     Tellduscore.should_receive(:get_name).once.with(@kitchen_lamp[:id]).and_return(@kitchen_lamp[:name])
 
-    device = Home.find @kitchen_lamp[:id].to_s
+    device = Device.find @kitchen_lamp[:id].to_s
     device.id.should == @kitchen_lamp[:id]
   end
 end

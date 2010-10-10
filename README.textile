@@ -12,7 +12,7 @@ h2. Exempel
 <pre>
 <code>
 # Hämta alla apparater
-devices = Home.devices
+devices = Device.devices
 
 # Sätt på den första
 device = devices.first.turn_on
@@ -24,10 +24,10 @@ device.status
 device.name
 
 # Hämta en apparat med hjälp av id
-device = Home.find 1
+device = Device.find 1
 
 # Stäng av alla apparater i hemmet
-Home.turn_off
+Device.turn_off
 
 # Gör din sambo galen
 while
@@ -35,9 +35,9 @@ while
   dark = (status == :off) ? true : false
 
   if dark
-    Home.turn_on
+    Device.turn_on
   else
-    Home.turn_off
+    Device.turn_off
   end
 
   sleep 3
