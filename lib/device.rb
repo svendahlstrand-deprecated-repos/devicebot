@@ -43,7 +43,7 @@ class Device
   # (the content of the file usually located in /etc/tellstick.conf).
   #
   # @return [Array] of devices.
-  def self.devices
+  def self.all
     number_of_devices = Tellduscore.number_of_devices
 
     number_of_devices.times.inject([]) do |devices, i|
@@ -57,12 +57,12 @@ class Device
 
   # Turn on all devices.
   def self.turn_on
-    devices.each &:turn_on
+    all.each &:turn_on
   end
 
   # Turn off all devices.
   def self.turn_off
-    devices.each &:turn_off
+    all.each &:turn_off
   end
 
   # Find a device by it's id.

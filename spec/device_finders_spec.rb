@@ -13,7 +13,7 @@ describe Device do
     }
   end
 
-  it 'should have devices' do
+  it 'should get all devices' do
     number_of_devices = 2
 
     Tellduscore.should_receive(:number_of_devices).and_return(number_of_devices)
@@ -22,18 +22,14 @@ describe Device do
     Tellduscore.should_receive(:get_name).once.with(@kitchen_lamp[:id]).and_return(@kitchen_lamp[:name])
     Tellduscore.should_receive(:get_name).once.with(@bedroom_lamp[:id]).and_return(@bedroom_lamp[:name])
 
-    devices = Device.devices
+    devices = Device.all
 
     devices.length.should == number_of_devices
     devices.first.id.should == @kitchen_lamp[:id]
     devices.first.name.should == @kitchen_lamp[:name]
   end
 
-  it 'should only hit the api once when calling devices' do
-    #Tellduscore.should_receive(:number_of_devices).once.and_return(0)
-
-    #Device.devices
-    #Device.devices
+  it 'should only hit the api once' do
     pending
   end
 
@@ -42,7 +38,7 @@ describe Device do
     bedroom_lamp = Device.new @bedroom_lamp
     lamps = [kitchen_lamp, bedroom_lamp]
 
-    Device.should_receive(:devices).once.and_return(lamps)
+    Device.should_receive(:all).once.and_return(lamps)
     kitchen_lamp.should_receive(:turn_off).once
     bedroom_lamp.should_receive(:turn_off).once
 
@@ -54,7 +50,7 @@ describe Device do
     bedroom_lamp = Device.new @bedroom_lamp
     lamps = [kitchen_lamp, bedroom_lamp]
 
-    Device.should_receive(:devices).once.and_return(lamps)
+    Device.should_receive(:all).once.and_return(lamps)
     kitchen_lamp.should_receive(:turn_on).once
     bedroom_lamp.should_receive(:turn_on).once
 

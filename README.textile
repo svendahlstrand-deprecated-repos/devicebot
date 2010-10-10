@@ -12,7 +12,7 @@ h2. Exempel
 <pre>
 <code>
 # Hämta alla apparater
-devices = Device.devices
+devices = Device.all
 
 # Sätt på den första
 device = devices.first.turn_on

@@ -5,7 +5,7 @@ require 'sinatra'
 require_relative '../lib/device'
 
 get '/' do
-  @devices = Device.devices
+  @devices = Device.all
   erb :index
 end
 
