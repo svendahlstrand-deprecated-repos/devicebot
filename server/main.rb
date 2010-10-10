@@ -10,12 +10,12 @@ get '/' do
 end
 
 get '/devices/on' do
-  Device.turn_on
+  Devices.all.turn_on
   redirect '/'
 end
 
 get '/devices/off' do
-  Device.turn_off
+  Device.all.turn_off
   redirect '/'
 end
 

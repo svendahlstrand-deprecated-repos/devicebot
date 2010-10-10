@@ -27,7 +27,7 @@ device.name
 device = Device.find 1
 
 # Stäng av alla apparater i hemmet
-Device.turn_off
+devices.turn_off
 
 # Gör din sambo galen
 while
@@ -35,9 +35,9 @@ while
   dark = (status == :off) ? true : false
 
   if dark
-    Device.turn_on
+    devices.turn_on
   else
-    Device.turn_off
+    devices.turn_off
   end
 
   sleep 3

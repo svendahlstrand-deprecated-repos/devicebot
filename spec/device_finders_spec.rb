@@ -38,11 +38,10 @@ describe Device do
     bedroom_lamp = Device.new @bedroom_lamp
     lamps = [kitchen_lamp, bedroom_lamp]
 
-    Device.should_receive(:all).once.and_return(lamps)
     kitchen_lamp.should_receive(:turn_off).once
     bedroom_lamp.should_receive(:turn_off).once
 
-    Device.turn_off
+    lamps.turn_off
   end
 
   it 'should turn on all devices' do
@@ -50,11 +49,10 @@ describe Device do
     bedroom_lamp = Device.new @bedroom_lamp
     lamps = [kitchen_lamp, bedroom_lamp]
 
-    Device.should_receive(:all).once.and_return(lamps)
     kitchen_lamp.should_receive(:turn_on).once
     bedroom_lamp.should_receive(:turn_on).once
 
-    Device.turn_on
+    lamps.turn_on
   end
 
   it 'should return nil when no device is found' do

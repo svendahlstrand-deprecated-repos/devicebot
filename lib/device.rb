@@ -1,5 +1,6 @@
 class Device
   require 'tellduscore'
+  require_relative 'core_ext/array'
   require_relative 'core_ext/object'
 
   AVAILABLE_METHODS = Tellduscore::TELLSTICK_TURNON | Tellduscore::TELLSTICK_TURNOFF
@@ -53,16 +54,6 @@ class Device
 
       devices <<  device if device.valid?
     end
-  end
-
-  # Turn on all devices.
-  def self.turn_on
-    all.each &:turn_on
-  end
-
-  # Turn off all devices.
-  def self.turn_off
-    all.each &:turn_off
   end
 
   # Find a device by it's id.
