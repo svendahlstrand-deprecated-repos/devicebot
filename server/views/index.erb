@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name = "viewport" content = "width = device-width, user-scalable = no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/images/icon.png">
+    <title>devicebot</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="/js/application.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <dl id="devices">
+      <% @devices.each do |device| %>
+        <dt><%= device %> (<%= on_or_off device.status %>)</dt>
+        <dd><a href="/devices/<%= device.id %>/off">Av</a> / <a href="/devices/<%= device.id %>/on">På</a></dd>
+      <% end%>
+      <dt><strong>Alla</strong></dt>
+      <dd><a href="/devices/off">Av</a> / <a href="/devices/on">På</a></dd>
+    </dl>
+  </body>
+</html>

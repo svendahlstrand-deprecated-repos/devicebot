@@ -1,5 +1,20 @@
+GIT
+  remote: git://github.com/rtomayko/tilt.git
+  revision: 3a12d8e490bde2057e1aabd84888250ace3e11b9
+  specs:
+    tilt (1.1)
+
+GIT
+  remote: git://github.com/sinatra/sinatra.git
+  revision: 89af8c11670da1cffe3e4a03127e83fba2cef630
+  specs:
+    sinatra (1.1.0)
+      rack (~> 1.1)
+      tilt (~> 1.1)
+
 GEM
   specs:
+    rack (1.2.1)
     rspec (1.3.0)
 
 PLATFORMS
@@ -7,3 +22,5 @@ PLATFORMS
 
 DEPENDENCIES
   rspec
+  sinatra!
+  tilt!
