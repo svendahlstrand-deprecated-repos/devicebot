@@ -1,7 +1,7 @@
 Install instructions
 ====================
 
-OS X
+macOS
 ----
 
 * Install the native software: http://www.telldus.se/products/nativesoftware
